@@ -30,8 +30,8 @@ dependencies {
 }
 
 
-def siteUrl = 'https://github.com/youth5201314/banner' // 项目的主页
-def gitUrl = 'https://github.com/youth5201314/banner.git' // Git仓库的url
+def siteUrl = 'https://github.com/LoomisKoo/banner' // 项目的主页
+def gitUrl = 'https://github.com/LoomisKoo/banner.git' // Git仓库的url
 group = "com.loomis.banner" //一般填你唯一的包名
 //gradlew bintrayUpload
 install {
@@ -51,9 +51,9 @@ install {
                 }
                 developers {
                     developer {//填写的一些基本信息
-                        id 'youth5201314'
+                        id 'LoomisKoo'
                         name 'spring'
-                        email '1028729086@qq.com'
+                        email '286305974@qq.com'
                     }
                 }
                 scm {
