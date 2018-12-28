@@ -6,26 +6,27 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.loomis.banner.Banner;
+import com.loomis.banner.BannerConfig;
 import com.test.banner.App;
 import com.test.banner.R;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 public class IndicatorPositionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Banner banner;
+    Banner  banner;
     Spinner spinnerPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indicator_position);
         banner = (Banner) findViewById(R.id.banner);
-        spinnerPosition= (Spinner) findViewById(R.id.spinnerPosition);
+        spinnerPosition = (Spinner) findViewById(R.id.spinnerPosition);
         spinnerPosition.setOnItemSelectedListener(this);
 
         banner.setImages(App.images)
-                .setImageLoader(new GlideImageLoader())
-                .start();
+              .setImageLoader(new GlideImageLoader())
+              .start();
     }
 
     @Override
@@ -39,6 +40,8 @@ public class IndicatorPositionActivity extends AppCompatActivity implements Adap
                 break;
             case 2:
                 banner.setIndicatorGravity(BannerConfig.RIGHT);
+                break;
+            default:
                 break;
         }
         banner.start();

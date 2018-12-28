@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.youth.banner.loader.ImageLoader;
+import com.loomis.banner.loader.ImageLoader;
 
 
 public class FrescoImageLoader extends ImageLoader {

@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.loomis.banner.Banner;
+import com.loomis.banner.listener.OnBannerListener;
 import com.test.banner.App;
 import com.test.banner.R;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
 
 
 public class CustomViewPagerActivity extends AppCompatActivity implements OnBannerListener {

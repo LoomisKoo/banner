@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.test.banner.App;
 import com.test.banner.R;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
+import com.loomis.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;

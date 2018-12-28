@@ -3,11 +3,11 @@ package com.test.banner.demo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.loomis.banner.Banner;
+import com.loomis.banner.BannerConfig;
 import com.test.banner.App;
 import com.test.banner.R;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 public class CustomBannerActivity extends AppCompatActivity {
     Banner banner1,banner2,banner3;

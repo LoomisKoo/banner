@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.loomis.banner.Banner;
+import com.loomis.banner.listener.OnBannerListener;
 import com.test.banner.demo.BannerAnimationActivity;
 import com.test.banner.demo.BannerLocalActivity;
 import com.test.banner.demo.BannerStyleActivity;
@@ -20,8 +22,6 @@ import com.test.banner.demo.CustomBannerActivity;
 import com.test.banner.demo.CustomViewPagerActivity;
 import com.test.banner.demo.IndicatorPositionActivity;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,8 +31,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, AdapterView.OnItemClickListener, OnBannerListener {
     static final int REFRESH_COMPLETE = 0X1112;
     SuperSwipeRefreshLayout mSwipeLayout;
-    ListView listView;
-    Banner banner;
+    ListView                listView;
+    Banner                  banner;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -44,9 +44,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     banner.update(arrayList);
                     mSwipeLayout.setRefreshing(false);
                     break;
+                default:
+                    break;
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,20 +63,23 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         listView.addHeaderView(banner);
 
         String[] data = getResources().getStringArray(R.array.demo_list);
-        listView.setAdapter(new SampleAdapter(this,data));
+        listView.setAdapter(new SampleAdapter(this, data));
         listView.setOnItemClickListener(this);
 
         //简单使用
         banner.setImages(App.images)
-                .setImageLoader(new GlideImageLoader())
-                .setOnBannerListener(this)
-                .start();
+              .setImageLoader(new GlideImageLoader())
+              .setOnBannerListener(this)
+              .isAutoPlay(false)
+
+              .start();
+        banner.setCurPosition(2);
 
     }
 
     @Override
     public void OnBannerClick(int position) {
-        Toast.makeText(getApplicationContext(),"你点击了："+position,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "你点击了：" + position, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -100,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position){
+        switch (position) {
             case 1:
                 startActivity(new Intent(this, BannerAnimationActivity.class));
                 break;
@@ -118,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 break;
             case 6:
                 startActivity(new Intent(this, CustomViewPagerActivity.class));
+                break;
+            default:
                 break;
         }
     }

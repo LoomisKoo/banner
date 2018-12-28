@@ -3,7 +3,7 @@ package com.test.banner.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.youth.banner.view.BannerViewPager;
+import com.loomis.banner.view.BannerViewPager;
 
 
 public class CustomViewPager extends BannerViewPager {

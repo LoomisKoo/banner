@@ -28,5 +28,5 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.zxy.android:recovery:0.0.8'
     compile project(':banner')
-//    compile 'com.youth.banner:banner:+'
+//    compile 'com.loomis.banner:banner:+'
 }

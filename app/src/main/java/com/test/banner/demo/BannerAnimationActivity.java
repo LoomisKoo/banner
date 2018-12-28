@@ -12,33 +12,34 @@ import com.test.banner.App;
 import com.test.banner.R;
 import com.test.banner.SampleAdapter;
 import com.test.banner.loader.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.transformer.AccordionTransformer;
-import com.youth.banner.transformer.BackgroundToForegroundTransformer;
-import com.youth.banner.transformer.CubeInTransformer;
-import com.youth.banner.transformer.CubeOutTransformer;
-import com.youth.banner.transformer.DefaultTransformer;
-import com.youth.banner.transformer.DepthPageTransformer;
-import com.youth.banner.transformer.FlipHorizontalTransformer;
-import com.youth.banner.transformer.FlipVerticalTransformer;
-import com.youth.banner.transformer.ForegroundToBackgroundTransformer;
-import com.youth.banner.transformer.RotateDownTransformer;
-import com.youth.banner.transformer.RotateUpTransformer;
-import com.youth.banner.transformer.ScaleInOutTransformer;
-import com.youth.banner.transformer.StackTransformer;
-import com.youth.banner.transformer.TabletTransformer;
-import com.youth.banner.transformer.ZoomInTransformer;
-import com.youth.banner.transformer.ZoomOutSlideTransformer;
-import com.youth.banner.transformer.ZoomOutTranformer;
+import com.loomis.banner.Banner;
+import com.loomis.banner.listener.OnBannerListener;
+import com.loomis.banner.transformer.AccordionTransformer;
+import com.loomis.banner.transformer.BackgroundToForegroundTransformer;
+import com.loomis.banner.transformer.CubeInTransformer;
+import com.loomis.banner.transformer.CubeOutTransformer;
+import com.loomis.banner.transformer.DefaultTransformer;
+import com.loomis.banner.transformer.DepthPageTransformer;
+import com.loomis.banner.transformer.FlipHorizontalTransformer;
+import com.loomis.banner.transformer.FlipVerticalTransformer;
+import com.loomis.banner.transformer.ForegroundToBackgroundTransformer;
+import com.loomis.banner.transformer.RotateDownTransformer;
+import com.loomis.banner.transformer.RotateUpTransformer;
+import com.loomis.banner.transformer.ScaleInOutTransformer;
+import com.loomis.banner.transformer.StackTransformer;
+import com.loomis.banner.transformer.TabletTransformer;
+import com.loomis.banner.transformer.ZoomInTransformer;
+import com.loomis.banner.transformer.ZoomOutSlideTransformer;
+import com.loomis.banner.transformer.ZoomOutTranformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BannerAnimationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, OnBannerListener {
-    Banner banner;
-    List<Class<? extends ViewPager.PageTransformer>> transformers=new ArrayList<>();
-    public void initData(){
+    Banner                                           banner;
+    List<Class<? extends ViewPager.PageTransformer>> transformers = new ArrayList<>();
+
+    public void initData() {
         transformers.add(DefaultTransformer.class);
         transformers.add(AccordionTransformer.class);
         transformers.add(BackgroundToForegroundTransformer.class);
@@ -57,7 +58,7 @@ public class BannerAnimationActivity extends AppCompatActivity implements Adapte
         transformers.add(ZoomOutTranformer.class);
         transformers.add(ZoomOutSlideTransformer.class);
     }
-   
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,14 +66,15 @@ public class BannerAnimationActivity extends AppCompatActivity implements Adapte
         initData();
         banner = (Banner) findViewById(R.id.banner);
         ListView listView = (ListView) findViewById(R.id.list);
-        String[] data = getResources().getStringArray(R.array.anim);
+        String[] data     = getResources().getStringArray(R.array.anim);
         listView.setAdapter(new SampleAdapter(this, data));
         listView.setOnItemClickListener(this);
 
         banner.setImages(App.images)
-                .setImageLoader(new GlideImageLoader())
-                .setOnBannerListener(this)
-                .start();
+              .setImageLoader(new GlideImageLoader())
+              .setOnBannerListener(this)
+              .setCurPosition(2)
+              .start();
 
     }
 
@@ -83,6 +85,6 @@ public class BannerAnimationActivity extends AppCompatActivity implements Adapte
 
     @Override
     public void OnBannerClick(int position) {
-        Toast.makeText(getApplicationContext(),"你点击了："+position,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "你点击了：" + position, Toast.LENGTH_SHORT).show();
     }
 }
