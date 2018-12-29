@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.loomis.banner.listener.OnBannerClickListener;
 import com.loomis.banner.listener.OnBannerListener;
 import com.loomis.banner.loader.ImageLoaderInterface;
@@ -59,7 +60,7 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
     private int             scaleType                 = 1;
     private List<String>    titles;
     private List            imageUrls;
-    private List<View>      imageViews;
+    private List<PhotoView> imageViews;
     private List<ImageView> indicatorImages;
     private Context         context;
     private BannerViewPager viewPager;
@@ -357,12 +358,12 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
      */
     private void addImageViews(List<?> imagesUrl) {
         for (int i = 0; i < count; i++) {
-            View imageView = null;
-            if (imageLoader != null) {
-                imageView = imageLoader.createImageView(context);
-            }
+            PhotoView imageView = null;
+//            if (imageLoader != null) {
+//                imageView = (MyImageView) imageLoader.createImageView(context);
+//            }
             if (imageView == null) {
-                imageView = new ImageView(context);
+                imageView = new PhotoView(context);
             }
             setScaleType(imageView);
             Object url = null;
@@ -377,40 +378,6 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
         }
     }
 
-    /**
-     * 循环滑动viewpager所需要的imageview
-     *
-     * @param imagesUrl
-     */
-    private void addImageviewsCirculate(List<?> imagesUrl) {
-        for (int i = 0; i <= count + 1; i++) {
-            View imageView = null;
-            if (imageLoader != null) {
-                imageView = imageLoader.createImageView(context);
-            }
-            if (imageView == null) {
-                imageView = new ImageView(context);
-            }
-            setScaleType(imageView);
-            Object url = null;
-            if (i == 0) {
-                url = imagesUrl.get(count - 1);
-            }
-            else if (i == count + 1) {
-                url = imagesUrl.get(0);
-            }
-            else {
-                url = imagesUrl.get(i - 1);
-            }
-            imageViews.add(imageView);
-            if (imageLoader != null) {
-                imageLoader.displayImage(context, url, imageView);
-            }
-            else {
-                Log.e(tag, "Please set images loader.");
-            }
-        }
-    }
 
     private void setScaleType(View imageView) {
         if (imageView instanceof ImageView) {
@@ -626,19 +593,21 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
         if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(toRealPosition(position));
         }
+        int lastImgPosition = (lastPosition + count) % count;
+        int curImgPosition  = (position + count) % count;
+
         if (bannerStyle == BannerConfig.CIRCLE_INDICATOR ||
                 bannerStyle == BannerConfig.CIRCLE_INDICATOR_TITLE ||
                 bannerStyle == BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE) {
-            int lastImgPosition;
-            int curImgPosition;
-
-            lastImgPosition = (lastPosition + count) % count;
-            curImgPosition = (position + count) % count;
 
             indicatorImages.get(lastImgPosition).setImageResource(mIndicatorUnselectedResId);
             indicatorImages.get(curImgPosition).setImageResource(mIndicatorSelectedResId);
             lastPosition = position;
         }
+        //放大后滑动复原大小
+        imageViews.get(curImgPosition).setScale(1.0f);
+//        PhotoView photoView = (PhotoView) viewPager.getChildAt(curImgPosition);
+//        photoView.setScale(1.0f);
 
         position += 1;
 
