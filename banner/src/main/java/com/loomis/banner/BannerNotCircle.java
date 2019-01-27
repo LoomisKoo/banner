@@ -57,7 +57,7 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
     private int             currentItem;
     private int             gravity                   = -1;
     private int             lastPosition              = 0;
-    private int             scaleType                 = 1;
+    private int             scaleType                 = -1;
     private List<String>    titles;
     private List            imageUrls;
     private List<PhotoView> imageViews;
@@ -92,7 +92,8 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
         imageUrls = new ArrayList<>();
         imageViews = new ArrayList<>();
         indicatorImages = new ArrayList<>();
-        dm = context.getResources().getDisplayMetrics();
+        dm = context.getResources()
+                    .getDisplayMetrics();
         indicatorSize = dm.widthPixels / 80;
         initView(context, attrs);
     }
@@ -100,7 +101,8 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
     private void initView(Context context, AttributeSet attrs) {
         imageViews.clear();
         handleTypedArray(context, attrs);
-        View view = LayoutInflater.from(context).inflate(mLayoutResId, this, true);
+        View view = LayoutInflater.from(context)
+                                  .inflate(mLayoutResId, this, true);
         bannerDefaultImage = (ImageView) view.findViewById(R.id.bannerDefaultImage);
         viewPager = (BannerViewPager) view.findViewById(R.id.bannerViewPager);
         titleView = (LinearLayout) view.findViewById(R.id.titleView);
@@ -369,6 +371,8 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
             Object url = null;
             url = imagesUrl.get(i);
             imageViews.add(imageView);
+
+
             if (imageLoader != null) {
                 imageLoader.displayImage(context, url, imageView);
             }
@@ -600,12 +604,15 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
                 bannerStyle == BannerConfig.CIRCLE_INDICATOR_TITLE ||
                 bannerStyle == BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE) {
 
-            indicatorImages.get(lastImgPosition).setImageResource(mIndicatorUnselectedResId);
-            indicatorImages.get(curImgPosition).setImageResource(mIndicatorSelectedResId);
+            indicatorImages.get(lastImgPosition)
+                           .setImageResource(mIndicatorUnselectedResId);
+            indicatorImages.get(curImgPosition)
+                           .setImageResource(mIndicatorSelectedResId);
             lastPosition = position;
         }
         //放大后滑动复原大小
-        imageViews.get(curImgPosition).setScale(1.0f);
+        imageViews.get(curImgPosition)
+                  .setScale(1.0f);
 //        PhotoView photoView = (PhotoView) viewPager.getChildAt(curImgPosition);
 //        photoView.setScale(1.0f);
 
