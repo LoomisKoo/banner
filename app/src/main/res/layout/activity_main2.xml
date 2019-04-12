@@ -8,6 +8,8 @@
 
     <com.loomis.banner.BannerNotCircle
         android:id="@+id/banner_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:transitionName="test"
+        app:image_scale_type="fit_center"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 </LinearLayout>

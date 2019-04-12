@@ -1,0 +1,41 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        // 改变右上角三个圆点的颜色
+
+        <!--<item name="android:windowAnimationStyle">@null</item>//设置跳转动画为null，即没有动画-->
+        <item name="android:windowBackground">@android:color/transparent</item>//设置窗口背景为透明
+        <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
+    </style>
+
+    <style name="noAnimTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowDisablePreview">true</item>
+
+        <item name="android:windowAnimationStyle">@null</item>//设置跳转动画为null，即没有动画
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+
+    </style>
+
+    <!--允许共享动画-->
+    <style name="TransitionsTheme" parent="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+</resources>

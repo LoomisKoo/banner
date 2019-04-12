@@ -20,11 +20,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.chrisbanes.photoview.PhotoView;
 import com.loomis.banner.listener.OnBannerClickListener;
 import com.loomis.banner.listener.OnBannerListener;
 import com.loomis.banner.loader.ImageLoaderInterface;
 import com.loomis.banner.view.BannerViewPager;
+import com.loomis.banner.view.TransferImage;
 import com.youth.banner.R;
 
 import java.lang.reflect.Field;
@@ -35,36 +35,36 @@ import static android.support.v4.view.ViewPager.OnPageChangeListener;
 import static android.support.v4.view.ViewPager.PageTransformer;
 
 public class BannerNotCircle extends FrameLayout implements OnPageChangeListener {
-    public  String          tag                       = "banner";
-    private int             mIndicatorMargin          = BannerConfig.PADDING_SIZE;
-    private int             mIndicatorWidth;
-    private int             mIndicatorHeight;
-    private int             indicatorSize;
-    private int             bannerBackgroundImage;
-    private int             bannerStyle               = BannerConfig.CIRCLE_INDICATOR;
-    private int             delayTime                 = BannerConfig.TIME;
-    private int             scrollTime                = BannerConfig.DURATION;
-    private boolean         isAutoPlay                = BannerConfig.IS_AUTO_PLAY;
-    private boolean         isScroll                  = BannerConfig.IS_SCROLL;
-    private int             mIndicatorSelectedResId   = R.drawable.gray_radius;
-    private int             mIndicatorUnselectedResId = R.drawable.white_radius;
-    private int             mLayoutResId              = R.layout.banner;
-    private int             titleHeight;
-    private int             titleBackground;
-    private int             titleTextColor;
-    private int             titleTextSize;
-    private int             count                     = 0;
-    private int             currentItem;
-    private int             gravity                   = -1;
-    private int             lastPosition              = 0;
-    private int             scaleType                 = -1;
-    private List<String>    titles;
-    private List            imageUrls;
-    private List<PhotoView> imageViews;
-    private List<ImageView> indicatorImages;
-    private Context         context;
-    private BannerViewPager viewPager;
-    private TextView        bannerTitle, numIndicatorInside, numIndicator;
+    public  String              tag                       = "banner";
+    private int                 mIndicatorMargin          = BannerConfig.PADDING_SIZE;
+    private int                 mIndicatorWidth;
+    private int                 mIndicatorHeight;
+    private int                 indicatorSize;
+    private int                 bannerBackgroundImage;
+    private int                 bannerStyle               = BannerConfig.CIRCLE_INDICATOR;
+    private int                 delayTime                 = BannerConfig.TIME;
+    private int                 scrollTime                = BannerConfig.DURATION;
+    private boolean             isAutoPlay                = BannerConfig.IS_AUTO_PLAY;
+    private boolean             isScroll                  = BannerConfig.IS_SCROLL;
+    private int                 mIndicatorSelectedResId   = R.drawable.gray_radius;
+    private int                 mIndicatorUnselectedResId = R.drawable.white_radius;
+    private int                 mLayoutResId              = R.layout.banner;
+    private int                 titleHeight;
+    private int                 titleBackground;
+    private int                 titleTextColor;
+    private int                 titleTextSize;
+    private int                 count                     = 0;
+    private int                 currentItem;
+    private int                 gravity                   = -1;
+    private int                 lastPosition              = 0;
+    private int                 scaleType                 = -1;
+    private List<String>        titles;
+    private List                imageUrls;
+    private List<TransferImage> imageViews;
+    private List<ImageView>     indicatorImages;
+    private Context             context;
+    public  BannerViewPager     viewPager;
+    private TextView            bannerTitle, numIndicatorInside, numIndicator;
     private LinearLayout indicator, indicatorInside, titleView;
     private ImageView             bannerDefaultImage;
     private ImageLoaderInterface  imageLoader;
@@ -360,12 +360,12 @@ public class BannerNotCircle extends FrameLayout implements OnPageChangeListener
      */
     private void addImageViews(List<?> imagesUrl) {
         for (int i = 0; i < count; i++) {
-            PhotoView imageView = null;
+            TransferImage imageView = null;
 //            if (imageLoader != null) {
 //                imageView = (MyImageView) imageLoader.createImageView(context);
 //            }
             if (imageView == null) {
-                imageView = new PhotoView(context);
+                imageView = new TransferImage(context);
             }
             setScaleType(imageView);
             Object url = null;

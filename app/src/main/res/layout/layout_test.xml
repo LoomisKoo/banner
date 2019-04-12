@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/white"
+    android:layout_height="match_parent">
+
+    <com.loomis.banner.BannerNotCircle
+        android:layout_gravity="center"
+        android:transitionName="test"
+        app:image_scale_type="fit_center"
+        android:id="@+id/banner_test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
