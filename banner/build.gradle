@@ -34,7 +34,7 @@ allprojects {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     provided 'com.android.support:support-v4:+'
-    compile 'com.github.chrisbanes:PhotoView:2.1.3'
+    api 'com.github.chrisbanes:PhotoView:2.1.3'
 }
 
 
